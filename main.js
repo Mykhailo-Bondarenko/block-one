@@ -478,100 +478,68 @@ function deleteColumnMatrix(array, callback) {
 
 // Посчитать сумму / количество нулевых элементов / среднее значение элементов матрицы над и под главной диагональю и на главной диагонали.
 
-function findSumDiagonal(array) {
-  let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    sum += array[i][i];
+function findMainDiagonal(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Сheck incoming parameters.');
   }
-  return sum;
+  let result = {};
+  result['Sum all elements'] = 0;
+  result['Count elements equal callback'] = 0;
+  result['Average of elements'] = 0;
+  result['tmp'] = 0;
+  for (let i = 0; i < array.length; i++) {
+    result['Sum all elements'] += array[i][i];
+    result['tmp']++;
+    if (callback(array[i][i])) {
+      result['Count elements equal callback']++;
+    }
+  }
+  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  return result;
 }
 
-function findSumAboveDiagonal(array) {
-  let sum = 0;
+function findAboveMainDiagonal(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  let result = {};
+  result['Sum all elements'] = 0;
+  result['Count elements equal callback'] = 0;
+  result['Average of elements'] = 0;
+  result['tmp'] = 0;
   for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array[i].length; j++) {
-      sum += array[i][j];
-    }
-  }
-  return sum;
-}
-
-function findSumUnderDiagonal(array) {
-  let sum = 0;
-  for (let i = 1; i < array.length; i++) {
-    for (let j = 0; j < i; j++) {
-      sum += array[i][j];
-    }
-  }
-  return sum;
-}
-
-function findAmountZeroDiagonal(array) {
-  let amount = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (array[i][i] === 0) {
-      amount++;
-    }
-  }
-  return amount;
-}
-
-function findAmounZeroAboveDiagonal(array) {
-  let amount = 0;
-  for (let i = 0; i < array.length; i++) {
-    for (let j = i + 1; j < array[i].length; j++) {
-      if (array[i][j] === 0) {
-        amount++;
+      result['Sum all elements'] += array[i][j];
+      result['tmp']++;
+      if (callback(array[i][j])) {
+        result['Count elements equal callback']++;
       }
     }
   }
-  return amount;
+  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  return result;
 }
 
-function findAmountZeroUnderDiagonal(array) {
-  let amount = 0;
+function findUnderMainDiagonal(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  let result = {};
+  result['Sum all elements'] = 0;
+  result['Count elements equal callback'] = 0;
+  result['Average of elements'] = 0;
+  result['tmp'] = 0;
   for (let i = 1; i < array.length; i++) {
     for (let j = 0; j < i; j++) {
-      if (array[i][j] === 0) {
-        amount++;
+      result['Sum all elements'] += array[i][j];
+      result['tmp']++;
+      if (callback(array[i][j])) {
+        result['Count elements equal callback']++;
       }
     }
   }
-  return amount;
-}
-
-function findAverageDiagonal(array) {
-  let sum = 0;
-  let counter = 0;
-  for (let i = 0; i < array.length; i++) {
-    sum += array[i][i];
-    counter++;
-  }
-  return sum / counter;
-}
-
-function findAverageAboveDiagonal(array) {
-  let sum = 0;
-  let counter = 0;
-  for (let i = 0; i < array.length; i++) {
-    for (let j = i + 1; j < array[i].length; j++) {
-      sum += array[i][j];
-      counter++;
-    }
-  }
-  return sum / counter;
-}
-
-function findAverageUnderDiagonal(array) {
-  let sum = 0;
-  let counter = 0;
-  for (let i = 1; i < array.length; i++) {
-    for (let j = 0; j < i; j++) {
-      sum += array[i][j];
-      counter++;
-    }
-  }
-  return sum / counter;
+  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  return result;
 }
 
 //* task 18
