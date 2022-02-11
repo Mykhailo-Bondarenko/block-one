@@ -343,7 +343,6 @@ function transformBinary(number) {
   }
   return result;
 }
-console.log(transformBinary(9));
 
 function trasformDecimal(str) {
   if (typeof str !== 'string') {
