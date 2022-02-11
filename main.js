@@ -116,7 +116,7 @@ function countWords(str) {
 }
 
 //* task 7 
-// Вычислить периметр и площадь для прямоугольника, треугольника и круга.С помощью конструктора и классов.
+//Вычислить периметр и площадь для прямоугольника, треугольника и круга. С помощью конструктора и классов.
 
 class Rectangle {
   constructor(width, heigth) {
@@ -414,7 +414,7 @@ function averageNumberMatrix(array, callback) {
 //* task 15
 // Транспонировать матрицу, сложить две матрицы.
 
-function transportMatrix(array) {
+function transposeMatrix(array) {
   if (!Array.isArray(array)) {
     throw new Error('Сheck incoming parameters.');
   }
@@ -495,6 +495,7 @@ function findMainDiagonal(array, callback) {
     }
   }
   result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  delete result['tmp'];
   return result;
 }
 
@@ -517,6 +518,7 @@ function findAboveMainDiagonal(array, callback) {
     }
   }
   result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  delete result['tmp'];
   return result;
 }
 
@@ -539,6 +541,7 @@ function findUnderMainDiagonal(array, callback) {
     }
   }
   result['Average of elements'] = result['Sum all elements'] / result['tmp'];
+  delete result['tmp'];
   return result;
 }
 
@@ -626,7 +629,7 @@ const trafficColors = {
       },
     };
   },
-}
+};
 
 function* generateTrafficColors() {
   const colors = ['red', 'yellow', 'green', 'yellow'];
@@ -639,3 +642,44 @@ function* generateTrafficColors() {
 
 //* task 20
 // Определить является ли число отрицательным или положительным без сравнения на больше/меньше нуля (побитово). Посчитать количество битов числа которые установлены в единицу и которые установлены в 0. Написать свою реализацию для ~, двумя способами).
+
+function checkIsPositive(number) {
+  if (typeof number !== 'number') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  return !(number >> 31);
+}
+
+function calculateСountBits(number) {
+  if (typeof number !== 'number') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  const result = {};
+  result['Count bit One in number'] = 0;
+  result['Count bit Zero in number'] = 0;
+  for (let i = 0; i < 32; i++) {
+    if ((number & (1 << i)) === (1 << i)) {
+      result['Count bit One in number']++;
+    } else {
+      result['Count bit Zero in number']++;
+    }
+  }
+  return result;
+}
+
+function bitwiseNotSimple(number) {
+  if (typeof number !== 'number') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  return -(number + 1);
+}
+
+function bitwiseNot(number) {
+  if (typeof number !== 'number') {
+    throw new Error('Сheck incoming parameters.');
+  }
+  for (let i = 0; i < 32; i++) {
+    number ^= (1 << i);
+  }
+  return number;
+}
