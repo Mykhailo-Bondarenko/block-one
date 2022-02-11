@@ -4,7 +4,7 @@
 
 function checkIsAnagramma(strOne, strTwo) {
   if (typeof strOne !== 'string' || typeof strTwo !== 'string') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Arguments must be a string.');
   }
   if (strOne.length !== strTwo.length) {
     return false;
@@ -37,7 +37,7 @@ function checkIsAnagramma(strOne, strTwo) {
 
 function lengthNumber(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a number.');
   }
   let result = 0;
   if (number < 0) {
@@ -52,7 +52,7 @@ function lengthNumber(number) {
 
 function lengthNumberRecursion(number, result) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a number.');
   }
   result = result || 1;
   if (number < 0) {
@@ -69,7 +69,7 @@ function lengthNumberRecursion(number, result) {
 
 function checkIsPolindrome(str) {
   if (typeof str !== 'string') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a string.');
   }
   for (let i = 0; i < str.length; i++) {
     if (str[i] !== str[str.length - i - 1]) {
@@ -84,7 +84,7 @@ function checkIsPolindrome(str) {
 
 function countUniqueWords(str) {
   if (typeof str !== 'string') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a string.');
   }
   const countWords = {};
   const arrayWords = str.split(' ');
@@ -105,7 +105,7 @@ function countUniqueWords(str) {
 
 function countWords(str) {
   if (typeof str !== 'string') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a string.');
   }
   const countWords = {};
   const arrayWords = str.split(' ');
@@ -118,97 +118,130 @@ function countWords(str) {
 //* task 7 
 //Вычислить периметр и площадь для прямоугольника, треугольника и круга. С помощью конструктора и классов.
 
-class Rectangle {
-  constructor(width, heigth) {
-    this.width = width;
-    this.heigth = heigth;
-  }
-  perimeter() {
-    return (this.width + this.heigth) * 2;
-  }
-  square() {
-    return this.width * this.heigth;
-  }
-}
+// class Rectangle {
+//   constructor(width, heigth) {
+//     if (typeof width !== 'number'
+//       || typeof heigth !== 'number'
+//       || width <= 0
+//       || heigth <= 0) {
+//       throw new Error('Arguments must be a positive number.');
+//     }
+//     this.width = width;
+//     this.heigth = heigth;
+//   }
+//   perimeter() {
+//     return (this.width + this.heigth) * 2;
+//   }
+//   square() {
+//     return this.width * this.heigth;
+//   }
+// }
 
-class Triangle {
-  constructor(firstSide, secondSide, thirdSide) {
-    this.firstSide = firstSide;
-    this.secondSide = secondSide;
-    this.thirdSide = thirdSide;
-  }
-  perimeter() {
-    return this.firstSide + this.secondSide + this.thirdSide;
-  }
-  square() {
-    return Math.sqrt(
-      this.perimeter()
-      * (this.perimeter() - this.firstSide)
-      * (this.perimeter() - this.secondSide)
-      * (this.perimeter() - this.thirdSide));
-  }
-}
+// class Triangle {
+//   constructor(firstSide, secondSide, thirdSide) {
+//     if (typeof firstSide !== 'number'
+//       || typeof secondSide !== 'number'
+//       || typeof thirdSide !== 'number'
+//       || firstSide <= 0
+//       || secondSide <= 0
+//       || thirdSide <= 0) {
+//       throw new Error('Arguments must be a positive number.');
+//     }
+//     this.firstSide = firstSide;
+//     this.secondSide = secondSide;
+//     this.thirdSide = thirdSide;
+//   }
+//   perimeter() {
+//     return this.firstSide + this.secondSide + this.thirdSide;
+//   }
+//   square() {
+//     return Math.sqrt(
+//       this.perimeter()
+//       * (this.perimeter() - this.firstSide)
+//       * (this.perimeter() - this.secondSide)
+//       * (this.perimeter() - this.thirdSide));
+//   }
+// }
 
-class Сircle {
-  constructor(diameter) {
-    this.diameter = diameter;
-  }
-  perimeter() {
-    return Math.PI * this.diameter;
-  }
-  square() {
-    return (this.perimeter() * this.diameter) / 4;
-  }
-}
+// class Сircle {
+//   constructor(diameter) {
+//     if (typeof diameter !== 'number' || diameter <= 0) {
+//       throw new Error('Argument must be a positive number.');
+//     }
+//     this.diameter = diameter;
+//   }
+//   perimeter() {
+//     return Math.PI * this.diameter;
+//   }
+//   square() {
+//     return (this.perimeter() * this.diameter) / 4;
+//   }
+// }
 
-function Rectangle(width, heigth) {
-  this.width = width;
-  this.heigth = heigth;
-}
+// function Rectangle(width, heigth) {
+//   if (typeof width !== 'number'
+//     || typeof heigth !== 'number'
+//     || width <= 0
+//     || heigth <= 0) {
+//     throw new Error('Arguments must be a positive number.');
+//   }
+//   this.width = width;
+//   this.heigth = heigth;
+// }
+// Rectangle.prototype.perimeter = function () {
+//   return (this.width + this.heigth) * 2;
+// }
+// Rectangle.prototype.square = function () {
+//   return this.width * this.heigth;
+// }
 
-Rectangle.prototype.perimeter = function () {
-  return (this.width + this.heigth) * 2;
-}
-Rectangle.prototype.square = function () {
-  return this.width * this.heigth;
-}
+// function Triangle(firstSide, secondSide, thirdSide) {
+//   if (typeof firstSide !== 'number'
+//     || typeof secondSide !== 'number'
+//     || typeof thirdSide !== 'number'
+//     || firstSide <= 0
+//     || secondSide <= 0
+//     || thirdSide <= 0) {
+//     throw new Error('Arguments must be a positive number.');
+//   }
+//   this.firstSide = firstSide;
+//   this.secondSide = secondSide;
+//   this.thirdSide = thirdSide;
+// }
 
-function Triangle(firstSide, secondSide, thirdSide) {
-  this.firstSide = firstSide;
-  this.secondSide = secondSide;
-  this.thirdSide = thirdSide;
-}
+// Triangle.prototype.square = function () {
+//   return Math.sqrt(
+//     this.perimeter()
+//     * (this.perimeter() - this.firstSide)
+//     * (this.perimeter() - this.secondSide)
+//     * (this.perimeter() - this.thirdSide));
+// }
 
-Triangle.prototype.square = function () {
-  return Math.sqrt(
-    this.perimeter()
-    * (this.perimeter() - this.firstSide)
-    * (this.perimeter() - this.secondSide)
-    * (this.perimeter() - this.thirdSide));
-}
+// Triangle.prototype.perimeter = function () {
+//   return this.firstSide + this.secondSide + this.thirdSide;
+// }
 
-Triangle.prototype.perimeter = function () {
-  return this.firstSide + this.secondSide + this.thirdSide;
-}
+// function Сircle(diameter) {
+//   if (typeof diameter !== 'number' || diameter <= 0) {
+//     throw new Error('Argument must be a positive number.');
+//   }
+//   this.diameter = diameter;
+// }
 
-function Сircle(diameter) {
-  this.diameter = diameter;
-}
+// Circle.prototype.perimeter = function () {
+//   return Math.PI * this.diameter;
+// }
 
-Circle.prototype.perimeter = function () {
-  return Math.PI * this.diameter;
-}
-
-Circle.prototype.square = function () {
-  return (this.perimeter() * this.diameter) / 4;
-}
+// Circle.prototype.square = function () {
+//   return (this.perimeter() * this.diameter) / 4;
+// }
 
 //* task 8
 // Вычислить факториал числа. Реализовать с помощью рекурсии. Реализовать мемоизированную функцию вычисления факториала.
 
 function factorialNumber(number) {
   if (typeof number !== 'number' || number < 0) {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a positive number.');
   }
   let result = 1;
   for (let i = 1; i <= number; i++) {
@@ -219,7 +252,7 @@ function factorialNumber(number) {
 
 function factorialNumberRecursion(number) {
   if (typeof number !== 'number' || number < 0) {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a positive number.');
   }
   if (number === 1) {
     return 1;
@@ -230,6 +263,9 @@ function factorialNumberRecursion(number) {
 const memoFactorial = (function () {
   const memo = {};
   return function factorial(num) {
+    if (typeof num !== 'number' || num < 0) {
+      throw new Error('Argument must be a positive number.');
+    }
     let result;
     if (num in memo) {
       return memo[num];
@@ -247,6 +283,9 @@ const memoFactorial = (function () {
 // Посчитать сумму всех элементов массива, только тех которые (Кратные двум, кратные трем, которые только положительные и нечетные), реализовать с помощью рекурсии для одномерного массива.
 
 function sumNumbers(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array, callback must be a function.');
+  }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i])) {
@@ -256,14 +295,17 @@ function sumNumbers(array, callback) {
   return sum;
 }
 
-function sumNumbersRecursion(array, callback, sum, tmp) {
+function sumNumbersRecursion(array, callback, sum, index) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array, callback must be a function.');
+  }
   sum = sum || 0;
-  tmp = tmp || 0;
-  if (tmp < array.length) {
-    if (callback(array[tmp])) {
-      sum += array[tmp];
+  index = index || 0;
+  if (index < array.length) {
+    if (callback(array[index])) {
+      sum += array[index];
     }
-    return sumNumbersRecursion(array, callback, sum, ++tmp);
+    return sumNumbersRecursion(array, callback, sum, ++index);
   }
   return sum;
 }
@@ -274,6 +316,9 @@ function sumNumbersRecursion(array, callback, sum, tmp) {
 const checkIsSimpleNumber = (num) => (num > 2 && num % 2 === 0) ? false : num > 1;
 
 function countNumbers(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array, callback must be a function.');
+  }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
     if (callback(array[i])) {
@@ -288,21 +333,21 @@ function countNumbers(array, callback) {
 
 function transformBinary(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a positive number.');
   }
   let result = '';
-  let tmp = 0;
   while (number > 0) {
-    tmp = number % 2;
-    result = tmp + result;
+    let temp = number % 2;
+    result = temp + result;
     number = Math.floor(number / 2);
   }
   return result;
 }
+console.log(transformBinary(9));
 
 function trasformDecimal(str) {
   if (typeof str !== 'string') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Argument must be a string.');
   }
   let result = 0;
   let length = str.length;
@@ -318,7 +363,7 @@ function trasformDecimal(str) {
 
 function sumNumbers(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
@@ -335,7 +380,7 @@ function sumNumbers(array, callback) {
 
 function сountNumbers(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
@@ -353,8 +398,10 @@ function сountNumbers(array, callback) {
 function sumNumbersRange(min, max, callback) {
   if (typeof min !== 'number'
     || typeof max !== 'number'
-    || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    || typeof callback !== 'function'
+    || min <= 0
+    || max <= 0) {
+    throw new Error('Min,max must be a numbers,callback must be a function.');
   }
   let sum = 0;
   for (let i = min; i <= max; i++) {
@@ -368,8 +415,10 @@ function sumNumbersRange(min, max, callback) {
 function sumNumbersRangeRecursion(min, max, callback, sum) {
   if (typeof min !== 'number'
     || typeof max !== 'number'
-    || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    || typeof callback !== 'function'
+    || min <= 0
+    || max <= 0) {
+    throw new Error('Min,max must be a numbers,callback must be a function.');
   }
   sum = sum || 0;
   while (min <= max) {
@@ -386,7 +435,7 @@ function sumNumbersRangeRecursion(min, max, callback, sum) {
 
 function averageNumber(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = 0;
   let counter = 0;
@@ -401,7 +450,7 @@ function averageNumber(array, callback) {
 
 function averageNumberMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = 0;
   let counter = 0;
@@ -421,7 +470,7 @@ function averageNumberMatrix(array, callback) {
 
 function transposeMatrix(array) {
   if (!Array.isArray(array)) {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array.');
   }
   let result = [];
   for (let i = 0; i < array[0].length; i++) {
@@ -434,8 +483,10 @@ function transposeMatrix(array) {
 }
 
 function sumTwoMatrix(arrayOne, arrayTwo) {
-  if (!Array.isArray(arrayOne) || !Array.isArray(arrayTwo)) {
-    throw new Error('Сheck incoming parameters.');
+  if (!Array.isArray(arrayOne)
+    || !Array.isArray(arrayTwo)
+    || arrayOne.length !== arrayTwo.length) {
+    throw new Error('Arrays must be arrays, with same length.');
   }
   let result = [];
   for (let i = 0; i < arrayOne.length; i++) {
@@ -452,7 +503,7 @@ function sumTwoMatrix(arrayOne, arrayTwo) {
 
 function deleteRowMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   for (let i = 0; i < array.length; i++) {
     if (array[i].some(callback)) {
@@ -465,7 +516,7 @@ function deleteRowMatrix(array, callback) {
 
 function deleteColumnMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   for (let i = 0; i < array.length; i++) {
     for (let j = 0; j < array[i].length; j++) {
@@ -485,68 +536,68 @@ function deleteColumnMatrix(array, callback) {
 
 function findMainDiagonal(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = {};
   result['Sum all elements'] = 0;
   result['Count elements equal callback'] = 0;
   result['Average of elements'] = 0;
-  result['tmp'] = 0;
+  result['temp'] = 0;
   for (let i = 0; i < array.length; i++) {
     result['Sum all elements'] += array[i][i];
-    result['tmp']++;
+    result['temp']++;
     if (callback(array[i][i])) {
       result['Count elements equal callback']++;
     }
   }
-  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
-  delete result['tmp'];
+  result['Average of elements'] = result['Sum all elements'] / result['temp'];
+  delete result['temp'];
   return result;
 }
 
 function findAboveMainDiagonal(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = {};
   result['Sum all elements'] = 0;
   result['Count elements equal callback'] = 0;
   result['Average of elements'] = 0;
-  result['tmp'] = 0;
+  result['temp'] = 0;
   for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array[i].length; j++) {
       result['Sum all elements'] += array[i][j];
-      result['tmp']++;
+      result['temp']++;
       if (callback(array[i][j])) {
         result['Count elements equal callback']++;
       }
     }
   }
-  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
-  delete result['tmp'];
+  result['Average of elements'] = result['Sum all elements'] / result['temp'];
+  delete result['temp'];
   return result;
 }
 
 function findUnderMainDiagonal(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Array must be array, callback must be a function.');
   }
   let result = {};
   result['Sum all elements'] = 0;
   result['Count elements equal callback'] = 0;
   result['Average of elements'] = 0;
-  result['tmp'] = 0;
+  result['temp'] = 0;
   for (let i = 1; i < array.length; i++) {
     for (let j = 0; j < i; j++) {
       result['Sum all elements'] += array[i][j];
-      result['tmp']++;
+      result['temp']++;
       if (callback(array[i][j])) {
         result['Count elements equal callback']++;
       }
     }
   }
-  result['Average of elements'] = result['Sum all elements'] / result['tmp'];
-  delete result['tmp'];
+  result['Average of elements'] = result['Sum all elements'] / result['temp'];
+  delete result['temp'];
   return result;
 }
 
@@ -575,7 +626,7 @@ function numbersFibonacci() {
 
 function numberFibonacciRecursion(num) {
   if (typeof num !== 'number' || num < 0) {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Num must be a positive number.');
   }
   if (num === 0 || num === 1) {
     return 1;
@@ -586,7 +637,7 @@ function numberFibonacciRecursion(num) {
 
 function numberFibonacci(num) {
   if (typeof num !== 'number' || num < 0) {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Num must be a positive number.');
   }
   let numOne = 0;
   let numTwo = 1;
@@ -602,6 +653,9 @@ function numberFibonacci(num) {
 const memoFibonacci = (function () {
   const memo = {};
   return function func(num) {
+    if (typeof num !== 'number' || num < 0) {
+      throw new Error('Argument must be a positive number.');
+    }
     let result;
     if (num in memo) {
       return memo[num];
@@ -623,13 +677,13 @@ const trafficColors = {
   [Symbol.iterator]() {
     return {
       colors: this.colors,
-      tmp: 0,
+      temp: 0,
       next() {
-        if (this.tmp === this.colors.length) {
-          this.tmp = 0;
+        if (this.temp === this.colors.length) {
+          this.temp = 0;
         }
-        if (this.tmp <= this.colors.length) {
-          return { value: this.colors[this.tmp++], done: false, };
+        if (this.temp <= this.colors.length) {
+          return { value: this.colors[this.temp++], done: false, };
         }
       },
     };
@@ -637,11 +691,11 @@ const trafficColors = {
 };
 
 function* generateTrafficColors() {
-  const colors = ['red', 'yellow', 'green', 'yellow'];
   while (true) {
-    for (let i = 0; i < colors.length; i++) {
-      yield colors[i];
-    }
+    yield 'red';
+    yield 'yellow';
+    yield 'green';
+    yield 'yellow';
   }
 }
 
@@ -650,38 +704,36 @@ function* generateTrafficColors() {
 
 function checkIsPositive(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Number must be a number.');
   }
   return !(number >> 31);
 }
 
 function calculateСountBits(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Number must be a number.');
   }
   const result = {};
-  result['Count bit One in number'] = 0;
-  result['Count bit Zero in number'] = 0;
+  result.one = 0;
+  result.zero = 0;
   for (let i = 0; i < 32; i++) {
-    if ((number & (1 << i)) === (1 << i)) {
-      result['Count bit One in number']++;
-    } else {
-      result['Count bit Zero in number']++;
-    }
+    (number & (1 << i)) === (1 << i)
+      ? result.one++
+      : result.zero++;
   }
   return result;
 }
 
 function bitwiseNotSimple(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Number must be a number.');
   }
   return -(number + 1);
 }
 
 function bitwiseNot(number) {
   if (typeof number !== 'number') {
-    throw new Error('Сheck incoming parameters.');
+    throw new Error('Number must be a number.');
   }
   for (let i = 0; i < 32; i++) {
     number ^= (1 << i);
