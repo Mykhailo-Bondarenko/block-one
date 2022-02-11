@@ -164,38 +164,43 @@ class Сircle {
 function Rectangle(width, heigth) {
   this.width = width;
   this.heigth = heigth;
-  this.perimeter = () => {
-    return (this.width + this.heigth) * 2;
-  }
-  this.square = () => {
-    return this.width * this.heigth;
-  }
+}
+
+Rectangle.prototype.perimeter = function () {
+  return (this.width + this.heigth) * 2;
+}
+Rectangle.prototype.square = function () {
+  return this.width * this.heigth;
 }
 
 function Triangle(firstSide, secondSide, thirdSide) {
   this.firstSide = firstSide;
   this.secondSide = secondSide;
   this.thirdSide = thirdSide;
-  this.perimeter = () => {
-    return this.firstSide + this.secondSide + this.thirdSide;
-  }
-  this.square = () => {
-    return Math.sqrt(
-      this.perimeter()
-      * (this.perimeter() - this.firstSide)
-      * (this.perimeter() - this.secondSide)
-      * (this.perimeter() - this.thirdSide));
-  }
+}
+
+Triangle.prototype.square = function () {
+  return Math.sqrt(
+    this.perimeter()
+    * (this.perimeter() - this.firstSide)
+    * (this.perimeter() - this.secondSide)
+    * (this.perimeter() - this.thirdSide));
+}
+
+Triangle.prototype.perimeter = function () {
+  return this.firstSide + this.secondSide + this.thirdSide;
 }
 
 function Сircle(diameter) {
   this.diameter = diameter;
-  this.perimeter = () => {
-    return Math.PI * this.diameter;
-  }
-  this.square = () => {
-    return (this.perimeter() * this.diameter) / 4;
-  }
+}
+
+Circle.prototype.perimeter = function () {
+  return Math.PI * this.diameter;
+}
+
+Circle.prototype.square = function () {
+  return (this.perimeter() * this.diameter) / 4;
 }
 
 //* task 8
