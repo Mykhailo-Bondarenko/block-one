@@ -3,6 +3,9 @@
 // Написать функцию которая проверяет являются две строки анаграммой или нет
 
 function checkIsAnagramma(strOne, strTwo) {
+  if (arguments[1] === undefined || arguments.length > 2) {
+    throw new Error('Must be two arguments.')
+  }
   if (typeof strOne !== 'string' || typeof strTwo !== 'string') {
     throw new Error('Arguments must be a string.');
   }
@@ -30,27 +33,34 @@ function checkIsAnagramma(strOne, strTwo) {
   return true;
 }
 
-//* task 2
+//* task 2 
+// https://github.com/Mykhailo-Bondarenko/block-one/blob/master/task%202.jpg
 
 //* task 3 
 // Написать функцию которая вычисляет подсчет количество цифр в числе. Реализовать с помощью рекурсии.
 
-function lengthNumber(number) {
+function countNumberDigits(number) {
   if (typeof number !== 'number') {
     throw new Error('Argument must be a number.');
+  }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
   }
   let result = 0;
   if (number < 0) {
     number *= -1;
   }
-  for (let i = number; i > 1; i++) {
-    ++result;
-    i = Math.floor(i / 10);
+  if (number < 10) {
+    return 1;
+  }
+  while (number) {
+    result++;
+    number = Math.floor(number / 10);
   }
   return result;
 }
 
-function lengthNumberRecursion(number, result) {
+function countNumberDigitsRecursion(number, result) {
   if (typeof number !== 'number') {
     throw new Error('Argument must be a number.');
   }
@@ -61,7 +71,7 @@ function lengthNumberRecursion(number, result) {
   if (number < 10) {
     return result;
   }
-  return lengthNumberRecursion(number / 10, ++result);
+  return countNumberDigitsRecursion(number / 10, ++result);
 }
 
 //* task 4
@@ -70,6 +80,9 @@ function lengthNumberRecursion(number, result) {
 function checkIsPolindrome(str) {
   if (typeof str !== 'string') {
     throw new Error('Argument must be a string.');
+  }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
   }
   for (let i = 0; i < str.length; i++) {
     if (str[i] !== str[str.length - i - 1]) {
@@ -81,15 +94,46 @@ function checkIsPolindrome(str) {
 
 //* task 5
 // Написать функцию которая вычисляет подсчет уникальных слов в предложении
+String.prototype.mySplit = function (str, separator) {
+  if (typeof str !== "string") {
+    throw new Error("Argument must be a string.");
+  }
+  const result = [];
+  let string = '';
+  const length = str.length - 1;
+  for (let i = 0; i <= length; i++) {
+    if (separator === '') {
+      result.push(str[i]);
+    } else {
+      if (str[i] !== separator) {
+        string += str[i];
+        if (i === length) {
+          result.push(string);
+        }
+      } else {
+        result.push(string);
+        string = '';
+      }
+    }
+  }
+  return result;
+}
 
 function countUniqueWords(str) {
   if (typeof str !== 'string') {
     throw new Error('Argument must be a string.');
   }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
+  }
+  str = str.replace(/[^a-zа-яё0-9\s]/gi, '');
   const countWords = {};
-  const arrayWords = str.split(' ');
+  const arrayWords = str.mySplit(str, ' ');
   let result = 0;
   for (const item of arrayWords) {
+    if (item === '') {
+      continue;
+    }
     countWords[item] ? countWords[item]++ : countWords[item] = 1;
   }
   for (const value of Object.keys(countWords)) {
@@ -107,9 +151,16 @@ function countWords(str) {
   if (typeof str !== 'string') {
     throw new Error('Argument must be a string.');
   }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
+  }
+  str = str.replace(/[^a-zа-яё0-9\s]/gi, '');
   const countWords = {};
-  const arrayWords = str.split(' ');
+  const arrayWords = str.mySplit(str, ' ');
   for (const item of arrayWords) {
+    if (item === '') {
+      continue;
+    }
     countWords[item] ? countWords[item]++ : countWords[item] = 1;
   }
   return countWords;
@@ -125,6 +176,9 @@ function countWords(str) {
 //       || width <= 0
 //       || heigth <= 0) {
 //       throw new Error('Arguments must be a positive number.');
+//     }
+//     if (arguments.length > 2) {
+//       throw new Error('There must be only two argument.')
 //     }
 //     this.width = width;
 //     this.heigth = heigth;
@@ -147,6 +201,9 @@ function countWords(str) {
 //       || thirdSide <= 0) {
 //       throw new Error('Arguments must be a positive number.');
 //     }
+//     if (arguments.length > 3) {
+//       throw new Error('There must be only three argument.')
+//     }
 //     this.firstSide = firstSide;
 //     this.secondSide = secondSide;
 //     this.thirdSide = thirdSide;
@@ -164,17 +221,20 @@ function countWords(str) {
 // }
 
 // class Сircle {
-//   constructor(diameter) {
-//     if (typeof diameter !== 'number' || diameter <= 0) {
+//   constructor(radius) {
+//     if (typeof radius !== 'number' || radius <= 0) {
 //       throw new Error('Argument must be a positive number.');
 //     }
-//     this.diameter = diameter;
+//     if (arguments.length > 1) {
+//       throw new Error('There must be only one argument.')
+//     }
+//     this.radius = radius;
 //   }
 //   perimeter() {
-//     return Math.PI * this.diameter;
+//     return Math.PI * this.radius * 2;
 //   }
 //   square() {
-//     return (this.perimeter() * this.diameter) / 4;
+//     return Math.PI * (this.radius * this.radius);
 //   }
 // }
 
@@ -184,6 +244,9 @@ function countWords(str) {
 //     || width <= 0
 //     || heigth <= 0) {
 //     throw new Error('Arguments must be a positive number.');
+//   }
+//   if (arguments.length > 2) {
+//     throw new Error('There must be only two argument.')
 //   }
 //   this.width = width;
 //   this.heigth = heigth;
@@ -204,6 +267,9 @@ function countWords(str) {
 //     || thirdSide <= 0) {
 //     throw new Error('Arguments must be a positive number.');
 //   }
+//   if (arguments.length > 3) {
+//     throw new Error('There must be only three argument.')
+//   }
 //   this.firstSide = firstSide;
 //   this.secondSide = secondSide;
 //   this.thirdSide = thirdSide;
@@ -221,19 +287,22 @@ function countWords(str) {
 //   return this.firstSide + this.secondSide + this.thirdSide;
 // }
 
-// function Сircle(diameter) {
-//   if (typeof diameter !== 'number' || diameter <= 0) {
+// function Сircle(radius) {
+//   if (typeof radius !== 'number' || radius <= 0) {
 //     throw new Error('Argument must be a positive number.');
 //   }
-//   this.diameter = diameter;
+//   if (arguments.length > 2) {
+//     throw new Error('There must be only two argument.')
+//   }
+//   this.radius = radius;
 // }
 
-// Circle.prototype.perimeter = function () {
-//   return Math.PI * this.diameter;
+// Сircle.prototype.perimeter = function () {
+//   return Math.PI * this.radius * 2;
 // }
 
-// Circle.prototype.square = function () {
-//   return (this.perimeter() * this.diameter) / 4;
+// Сircle.prototype.square = function () {
+//   return Math.PI * (this.radius * this.radius);
 // }
 
 //* task 8
@@ -242,6 +311,12 @@ function countWords(str) {
 function factorialNumber(number) {
   if (typeof number !== 'number' || number < 0) {
     throw new Error('Argument must be a positive number.');
+  }
+  if (number > 170) {
+    throw new Error('You have reached the safest number possible.');
+  }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
   }
   let result = 1;
   for (let i = 1; i <= number; i++) {
@@ -254,6 +329,12 @@ function factorialNumberRecursion(number) {
   if (typeof number !== 'number' || number < 0) {
     throw new Error('Argument must be a positive number.');
   }
+  if (number > 170) {
+    throw new Error('You have reached the safest number possible.');
+  }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
+  }
   if (number === 1) {
     return 1;
   }
@@ -265,6 +346,12 @@ const memoFactorial = (function () {
   return function factorial(num) {
     if (typeof num !== 'number' || num < 0) {
       throw new Error('Argument must be a positive number.');
+    }
+    if (num > 170) {
+      throw new Error('You have reached the safest number possible.');
+    }
+    if (arguments.length > 1) {
+      throw new Error('There must be only one argument.')
     }
     let result;
     if (num in memo) {
@@ -282,45 +369,60 @@ const memoFactorial = (function () {
 //* task 9
 // Посчитать сумму всех элементов массива, только тех которые (Кратные двум, кратные трем, которые только положительные и нечетные), реализовать с помощью рекурсии для одномерного массива.
 
-function sumNumbers(array, callback) {
-  if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Array must be array, callback must be a function.');
-  }
-  let sum = 0;
-  for (let i = 0; i < array.length; i++) {
-    if (callback(array[i])) {
-      sum += array[i];
-    }
-  }
-  return sum;
-}
+// function sumNumbers(array, callback) {
+//   if (!Array.isArray(array) || typeof callback !== 'function') {
+//     throw new Error('Array must be array, callback must be a function.');
+//   }
+//   if (arguments.length > 2) {
+//     throw new Error('There must be only two argument.')
+//   }
+//   let sum = 0;
+//   for (let i = 0; i < array.length; i++) {
+//     if (typeof array[i] !== 'number') {
+//       throw new Error('Elements must be only numbers.');
+//     }
+//     if (callback(array[i])) {
+//       sum += array[i];
+//     }
+//   }
+//   return sum;
+// }
 
-function sumNumbersRecursion(array, callback, sum, index) {
-  if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Array must be array, callback must be a function.');
-  }
-  sum = sum || 0;
-  index = index || 0;
-  if (index < array.length) {
-    if (callback(array[index])) {
-      sum += array[index];
-    }
-    return sumNumbersRecursion(array, callback, sum, ++index);
-  }
-  return sum;
-}
+// function sumNumbersRecursion(array, callback, sum, index) {
+//   if (!Array.isArray(array) || typeof callback !== 'function') {
+//     throw new Error('Array must be array, callback must be a function.');
+//   }
+//   sum = sum || 0;
+//   index = index || 0;
+//   if (index < array.length) {
+//     if (typeof array[index] !== 'number') {
+//       throw new Error('Elements must be only numbers.');
+//     }
+//     if (callback(array[index])) {
+//       sum += array[index];
+//     }
+//     return sumNumbersRecursion(array, callback, sum, ++index);
+//   }
+//   return sum;
+// }
 
 //* task 10
 // Посчитать количество элементов массива которые (Нулевые, отрицательные, положительные, простые числа)
 
-const checkIsSimpleNumber = (num) => (num > 2 && num % 2 === 0) ? false : num > 1;
+const checkIsSimpleNum = (num) => (num > 2 && num % 2 === 0) ? false : num > 1;
 
 function countNumbers(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
     throw new Error('Array must be array, callback must be a function.');
   }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
+    if (typeof array[i] !== 'number') {
+      throw new Error('Elements must be only numbers.');
+    }
     if (callback(array[i])) {
       result++;
     }
@@ -335,6 +437,9 @@ function transformBinary(number) {
   if (typeof number !== 'number') {
     throw new Error('Argument must be a positive number.');
   }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
+  }
   let result = '';
   while (number > 0) {
     let temp = number % 2;
@@ -348,6 +453,9 @@ function trasformDecimal(str) {
   if (typeof str !== 'string') {
     throw new Error('Argument must be a string.');
   }
+  if (arguments.length > 1) {
+    throw new Error('There must be only one argument.')
+  }
   let result = 0;
   let length = str.length;
   for (let i = 0; i < str.length; i++) {
@@ -360,12 +468,18 @@ function trasformDecimal(str) {
 // Пункты 9 и 10 выполнить для двумерных массивов.
 //* task 12.9
 
-function sumNumbers(array, callback) {
+function sumNumbersMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
     throw new Error('Array must be array, callback must be a function.');
   }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      throw new Error('Must be a two-dimensional array.')
+    }
     for (let j = 0; j < array[i].length; j++) {
       if (callback(array[i][j])) {
         sum += array[i][j];
@@ -377,12 +491,18 @@ function sumNumbers(array, callback) {
 
 //* task12.10
 
-function сountNumbers(array, callback) {
+function сountNumbersMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
     throw new Error('Array must be array, callback must be a function.');
   }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      throw new Error('Must be a two-dimensional array.')
+    }
     for (let j = 0; j < array[i].length; j++)
       if (callback(array[i][j])) {
         result++;
@@ -394,13 +514,21 @@ function сountNumbers(array, callback) {
 //* task 13
 // Посчитать сумму значений чисел от min до max (всех, только тех которые кратны 3, только положительные). Нарисовать блок схему. Реализовать также с помощью рекурсии.
 
+// https://github.com/Mykhailo-Bondarenko/block-one/blob/master/task%2013.jpg
+
 function sumNumbersRange(min, max, callback) {
+  if (min > max) {
+    throw new Error('Min must be smaller than max.');
+  }
+  if (arguments.length > 3) {
+    throw new Error('There must be only three argument.')
+  }
   if (typeof min !== 'number'
     || typeof max !== 'number'
     || typeof callback !== 'function'
     || min <= 0
     || max <= 0) {
-    throw new Error('Min,max must be a numbers,callback must be a function.');
+    throw new Error('Min,max must be posivite numbers,callback a function.');
   }
   let sum = 0;
   for (let i = min; i <= max; i++) {
@@ -412,12 +540,15 @@ function sumNumbersRange(min, max, callback) {
 }
 
 function sumNumbersRangeRecursion(min, max, callback, sum) {
+  if (min > max) {
+    throw new Error('Min must be smaller than max.');
+  }
   if (typeof min !== 'number'
     || typeof max !== 'number'
     || typeof callback !== 'function'
     || min <= 0
     || max <= 0) {
-    throw new Error('Min,max must be a numbers,callback must be a function.');
+    throw new Error('Min,max must be posivite numbers,callback a function.');
   }
   sum = sum || 0;
   while (min <= max) {
@@ -436,9 +567,18 @@ function averageNumber(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
     throw new Error('Array must be array, callback must be a function.');
   }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
   let result = 0;
   let counter = 0;
+  if (array.length < 1) {
+    return result;
+  }
   for (let i = 0; i < array.length; i++) {
+    if (typeof array[i] !== 'number') {
+      throw new Error('Elements must be only numbers.');
+    }
     if (callback(array[i])) {
       result += array[i];
       counter++;
@@ -451,15 +591,30 @@ function averageNumberMatrix(array, callback) {
   if (!Array.isArray(array) || typeof callback !== 'function') {
     throw new Error('Array must be array, callback must be a function.');
   }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
+  if (array.length < 1) {
+    return result;
+  }
   let result = 0;
   let counter = 0;
   for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      throw new Error('Must be a two-dimensional array.')
+    }
+    if (array[i].length < 1) {
+      continue;
+    }
     for (let j = 0; j < array[i].length; j++) {
       if (callback(array[i][j])) {
         result += array[i][j];
         counter++;
       }
     }
+  }
+  if (counter === 0) {
+    return result;
   }
   return result / counter;
 }
@@ -533,71 +688,139 @@ function deleteColumnMatrix(array, callback) {
 
 // Посчитать сумму / количество нулевых элементов / среднее значение элементов матрицы над и под главной диагональю и на главной диагонали.
 
-function findMainDiagonal(array, callback) {
-  if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Array must be array, callback must be a function.');
+function findSumDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
   }
-  let result = {};
-  result['Sum all elements'] = 0;
-  result['Count elements equal callback'] = 0;
-  result['Average of elements'] = 0;
-  result['temp'] = 0;
+  let sum = 0;
   for (let i = 0; i < array.length; i++) {
-    result['Sum all elements'] += array[i][i];
-    result['temp']++;
-    if (callback(array[i][i])) {
-      result['Count elements equal callback']++;
-    }
+    sum += array[i][i];
   }
-  result['Average of elements'] = result['Sum all elements'] / result['temp'];
-  delete result['temp'];
-  return result;
+  return sum;
 }
 
-function findAboveMainDiagonal(array, callback) {
-  if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Array must be array, callback must be a function.');
+function findSumAboveDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
   }
-  let result = {};
-  result['Sum all elements'] = 0;
-  result['Count elements equal callback'] = 0;
-  result['Average of elements'] = 0;
-  result['temp'] = 0;
+  let sum = 0;
   for (let i = 0; i < array.length; i++) {
     for (let j = i + 1; j < array[i].length; j++) {
-      result['Sum all elements'] += array[i][j];
-      result['temp']++;
-      if (callback(array[i][j])) {
-        result['Count elements equal callback']++;
-      }
+      sum += array[i][j];
     }
   }
-  result['Average of elements'] = result['Sum all elements'] / result['temp'];
-  delete result['temp'];
-  return result;
+  return sum;
 }
 
-function findUnderMainDiagonal(array, callback) {
-  if (!Array.isArray(array) || typeof callback !== 'function') {
-    throw new Error('Array must be array, callback must be a function.');
+function findSumUnderDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
   }
-  let result = {};
-  result['Sum all elements'] = 0;
-  result['Count elements equal callback'] = 0;
-  result['Average of elements'] = 0;
-  result['temp'] = 0;
+  let sum = 0;
   for (let i = 1; i < array.length; i++) {
     for (let j = 0; j < i; j++) {
-      result['Sum all elements'] += array[i][j];
-      result['temp']++;
+      sum += array[i][j];
+    }
+  }
+  return sum;
+}
+
+function findAmountDiagonal(array, callback) {
+  if (!Array.isArray(array)
+    || typeof callback !== 'function'
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array and callback a function.');
+  }
+  let amount = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (callback(array[i][i])) {
+      amount++;
+    }
+  }
+  return amount;
+}
+
+function findAmounAboveDiagonal(array, callback) {
+  if (!Array.isArray(array)
+    || typeof callback !== 'function'
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array and callback a function.');
+  }
+  let amount = 0;
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array[i].length; j++) {
       if (callback(array[i][j])) {
-        result['Count elements equal callback']++;
+        amount++;
       }
     }
   }
-  result['Average of elements'] = result['Sum all elements'] / result['temp'];
-  delete result['temp'];
-  return result;
+  return amount;
+}
+
+function findAmountUnderDiagonal(array, callback) {
+  if (!Array.isArray(array)
+    || typeof callback !== 'function'
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array and callback a function.');
+  }
+  let amount = 0;
+  for (let i = 1; i < array.length; i++) {
+    for (let j = 0; j < i; j++) {
+      if (callback(array[i][j])) {
+        amount++;
+      }
+    }
+  }
+  return amount;
+}
+
+function findAverageDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
+  }
+  let sum = 0;
+  let counter = 0;
+  for (let i = 0; i < array.length; i++) {
+    sum += array[i][i];
+    counter++
+  }
+  return sum / counter;
+}
+
+function findAverageAboveDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
+  }
+  let sum = 0;
+  let counter = 0;
+  for (let i = 0; i < array.length; i++) {
+    for (let j = i + 1; j < array[i].length; j++) {
+      sum += array[i][j];
+      counter++;
+    }
+  }
+  return sum / counter;
+}
+
+function findAverageUnderDiagonal(array) {
+  if (!Array.isArray(array)
+    || array.length !== array[0].length) {
+    throw new Error('Array must be square array.');
+  }
+  let sum = 0;
+  let counter = 0;
+  for (let i = 1; i < array.length; i++) {
+    for (let j = 0; j < i; j++) {
+      sum += array[i][j];
+      counter++;
+    }
+  }
+  return sum / counter;
 }
 
 //* task 18
@@ -700,6 +923,7 @@ function* generateTrafficColors() {
 
 //* task 20
 // Определить является ли число отрицательным или положительным без сравнения на больше/меньше нуля (побитово). Посчитать количество битов числа которые установлены в единицу и которые установлены в 0. Написать свою реализацию для ~, двумя способами).
+
 
 function checkIsPositive(number) {
   if (typeof number !== 'number') {
