@@ -169,141 +169,141 @@ function countWords(str) {
 //* task 7 
 //Вычислить периметр и площадь для прямоугольника, треугольника и круга. С помощью конструктора и классов.
 
-// class Rectangle {
-//   constructor(width, heigth) {
-//     if (typeof width !== 'number'
-//       || typeof heigth !== 'number'
-//       || width <= 0
-//       || heigth <= 0) {
-//       throw new Error('Arguments must be a positive number.');
-//     }
-//     if (arguments.length > 2) {
-//       throw new Error('There must be only two argument.')
-//     }
-//     this.width = width;
-//     this.heigth = heigth;
-//   }
-//   perimeter() {
-//     return (this.width + this.heigth) * 2;
-//   }
-//   square() {
-//     return this.width * this.heigth;
-//   }
-// }
+class Rectangle {
+  constructor(width, heigth) {
+    if (typeof width !== 'number'
+      || typeof heigth !== 'number'
+      || width <= 0
+      || heigth <= 0) {
+      throw new Error('Arguments must be a positive number.');
+    }
+    if (arguments.length > 2) {
+      throw new Error('There must be only two argument.')
+    }
+    this.width = width;
+    this.heigth = heigth;
+  }
+  perimeter() {
+    return (this.width + this.heigth) * 2;
+  }
+  square() {
+    return this.width * this.heigth;
+  }
+}
 
-// class Triangle {
-//   constructor(firstSide, secondSide, thirdSide) {
-//     if (typeof firstSide !== 'number'
-//       || typeof secondSide !== 'number'
-//       || typeof thirdSide !== 'number'
-//       || firstSide <= 0
-//       || secondSide <= 0
-//       || thirdSide <= 0) {
-//       throw new Error('Arguments must be a positive number.');
-//     }
-//     if (arguments.length > 3) {
-//       throw new Error('There must be only three argument.')
-//     }
-//     this.firstSide = firstSide;
-//     this.secondSide = secondSide;
-//     this.thirdSide = thirdSide;
-//   }
-//   perimeter() {
-//     return this.firstSide + this.secondSide + this.thirdSide;
-//   }
-//   square() {
-//     return Math.sqrt(
-//       this.perimeter()
-//       * (this.perimeter() - this.firstSide)
-//       * (this.perimeter() - this.secondSide)
-//       * (this.perimeter() - this.thirdSide));
-//   }
-// }
+class Triangle {
+  constructor(firstSide, secondSide, thirdSide) {
+    if (typeof firstSide !== 'number'
+      || typeof secondSide !== 'number'
+      || typeof thirdSide !== 'number'
+      || firstSide <= 0
+      || secondSide <= 0
+      || thirdSide <= 0) {
+      throw new Error('Arguments must be a positive number.');
+    }
+    if (arguments.length > 3) {
+      throw new Error('There must be only three argument.')
+    }
+    this.firstSide = firstSide;
+    this.secondSide = secondSide;
+    this.thirdSide = thirdSide;
+  }
+  perimeter() {
+    return this.firstSide + this.secondSide + this.thirdSide;
+  }
+  square() {
+    return Math.sqrt(
+      this.perimeter()
+      * (this.perimeter() - this.firstSide)
+      * (this.perimeter() - this.secondSide)
+      * (this.perimeter() - this.thirdSide));
+  }
+}
 
-// class Сircle {
-//   constructor(radius) {
-//     if (typeof radius !== 'number' || radius <= 0) {
-//       throw new Error('Argument must be a positive number.');
-//     }
-//     if (arguments.length > 1) {
-//       throw new Error('There must be only one argument.')
-//     }
-//     this.radius = radius;
-//   }
-//   perimeter() {
-//     return Math.PI * this.radius * 2;
-//   }
-//   square() {
-//     return Math.PI * (this.radius * this.radius);
-//   }
-// }
+class Сircle {
+  constructor(radius) {
+    if (typeof radius !== 'number' || radius <= 0) {
+      throw new Error('Argument must be a positive number.');
+    }
+    if (arguments.length > 1) {
+      throw new Error('There must be only one argument.')
+    }
+    this.radius = radius;
+  }
+  perimeter() {
+    return Math.PI * this.radius * 2;
+  }
+  square() {
+    return Math.PI * (this.radius * this.radius);
+  }
+}
 
-// function Rectangle(width, heigth) {
-//   if (typeof width !== 'number'
-//     || typeof heigth !== 'number'
-//     || width <= 0
-//     || heigth <= 0) {
-//     throw new Error('Arguments must be a positive number.');
-//   }
-//   if (arguments.length > 2) {
-//     throw new Error('There must be only two argument.')
-//   }
-//   this.width = width;
-//   this.heigth = heigth;
-// }
-// Rectangle.prototype.perimeter = function () {
-//   return (this.width + this.heigth) * 2;
-// }
-// Rectangle.prototype.square = function () {
-//   return this.width * this.heigth;
-// }
+function Rectangle(width, heigth) {
+  if (typeof width !== 'number'
+    || typeof heigth !== 'number'
+    || width <= 0
+    || heigth <= 0) {
+    throw new Error('Arguments must be a positive number.');
+  }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
+  this.width = width;
+  this.heigth = heigth;
+}
+Rectangle.prototype.perimeter = function () {
+  return (this.width + this.heigth) * 2;
+}
+Rectangle.prototype.square = function () {
+  return this.width * this.heigth;
+}
 
-// function Triangle(firstSide, secondSide, thirdSide) {
-//   if (typeof firstSide !== 'number'
-//     || typeof secondSide !== 'number'
-//     || typeof thirdSide !== 'number'
-//     || firstSide <= 0
-//     || secondSide <= 0
-//     || thirdSide <= 0) {
-//     throw new Error('Arguments must be a positive number.');
-//   }
-//   if (arguments.length > 3) {
-//     throw new Error('There must be only three argument.')
-//   }
-//   this.firstSide = firstSide;
-//   this.secondSide = secondSide;
-//   this.thirdSide = thirdSide;
-// }
+function Triangle(firstSide, secondSide, thirdSide) {
+  if (typeof firstSide !== 'number'
+    || typeof secondSide !== 'number'
+    || typeof thirdSide !== 'number'
+    || firstSide <= 0
+    || secondSide <= 0
+    || thirdSide <= 0) {
+    throw new Error('Arguments must be a positive number.');
+  }
+  if (arguments.length > 3) {
+    throw new Error('There must be only three argument.')
+  }
+  this.firstSide = firstSide;
+  this.secondSide = secondSide;
+  this.thirdSide = thirdSide;
+}
 
-// Triangle.prototype.square = function () {
-//   return Math.sqrt(
-//     this.perimeter()
-//     * (this.perimeter() - this.firstSide)
-//     * (this.perimeter() - this.secondSide)
-//     * (this.perimeter() - this.thirdSide));
-// }
+Triangle.prototype.square = function () {
+  return Math.sqrt(
+    this.perimeter()
+    * (this.perimeter() - this.firstSide)
+    * (this.perimeter() - this.secondSide)
+    * (this.perimeter() - this.thirdSide));
+}
 
-// Triangle.prototype.perimeter = function () {
-//   return this.firstSide + this.secondSide + this.thirdSide;
-// }
+Triangle.prototype.perimeter = function () {
+  return this.firstSide + this.secondSide + this.thirdSide;
+}
 
-// function Сircle(radius) {
-//   if (typeof radius !== 'number' || radius <= 0) {
-//     throw new Error('Argument must be a positive number.');
-//   }
-//   if (arguments.length > 2) {
-//     throw new Error('There must be only two argument.')
-//   }
-//   this.radius = radius;
-// }
+function Сircle(radius) {
+  if (typeof radius !== 'number' || radius <= 0) {
+    throw new Error('Argument must be a positive number.');
+  }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
+  this.radius = radius;
+}
 
-// Сircle.prototype.perimeter = function () {
-//   return Math.PI * this.radius * 2;
-// }
+Сircle.prototype.perimeter = function () {
+  return Math.PI * this.radius * 2;
+}
 
-// Сircle.prototype.square = function () {
-//   return Math.PI * (this.radius * this.radius);
-// }
+Сircle.prototype.square = function () {
+  return Math.PI * (this.radius * this.radius);
+}
 
 //* task 8
 // Вычислить факториал числа. Реализовать с помощью рекурсии. Реализовать мемоизированную функцию вычисления факториала.
@@ -369,42 +369,42 @@ const memoFactorial = (function () {
 //* task 9
 // Посчитать сумму всех элементов массива, только тех которые (Кратные двум, кратные трем, которые только положительные и нечетные), реализовать с помощью рекурсии для одномерного массива.
 
-// function sumNumbers(array, callback) {
-//   if (!Array.isArray(array) || typeof callback !== 'function') {
-//     throw new Error('Array must be array, callback must be a function.');
-//   }
-//   if (arguments.length > 2) {
-//     throw new Error('There must be only two argument.')
-//   }
-//   let sum = 0;
-//   for (let i = 0; i < array.length; i++) {
-//     if (typeof array[i] !== 'number') {
-//       throw new Error('Elements must be only numbers.');
-//     }
-//     if (callback(array[i])) {
-//       sum += array[i];
-//     }
-//   }
-//   return sum;
-// }
+function sumNumbers(array, callback) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array, callback must be a function.');
+  }
+  if (arguments.length > 2) {
+    throw new Error('There must be only two argument.')
+  }
+  let sum = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (typeof array[i] !== 'number') {
+      throw new Error('Elements must be only numbers.');
+    }
+    if (callback(array[i])) {
+      sum += array[i];
+    }
+  }
+  return sum;
+}
 
-// function sumNumbersRecursion(array, callback, sum, index) {
-//   if (!Array.isArray(array) || typeof callback !== 'function') {
-//     throw new Error('Array must be array, callback must be a function.');
-//   }
-//   sum = sum || 0;
-//   index = index || 0;
-//   if (index < array.length) {
-//     if (typeof array[index] !== 'number') {
-//       throw new Error('Elements must be only numbers.');
-//     }
-//     if (callback(array[index])) {
-//       sum += array[index];
-//     }
-//     return sumNumbersRecursion(array, callback, sum, ++index);
-//   }
-//   return sum;
-// }
+function sumNumbersRecursion(array, callback, sum, index) {
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array, callback must be a function.');
+  }
+  sum = sum || 0;
+  index = index || 0;
+  if (index < array.length) {
+    if (typeof array[index] !== 'number') {
+      throw new Error('Elements must be only numbers.');
+    }
+    if (callback(array[index])) {
+      sum += array[index];
+    }
+    return sumNumbersRecursion(array, callback, sum, ++index);
+  }
+  return sum;
+}
 
 //* task 10
 // Посчитать количество элементов массива которые (Нулевые, отрицательные, положительные, простые числа)
