@@ -4,7 +4,7 @@
 
 function checkIsAnagramma(strOne, strTwo) {
   if (arguments[1] === undefined || arguments.length > 2) {
-    throw new Error('Must be two arguments.')
+    throw new Error('Must be two arguments.');
   }
   if (typeof strOne !== 'string' || typeof strTwo !== 'string') {
     throw new Error('Arguments must be a string.');
@@ -44,7 +44,7 @@ function countNumberDigits(number) {
     throw new Error('Argument must be a number.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   let result = 0;
   if (number < 0) {
@@ -82,7 +82,7 @@ function checkIsPolindrome(str) {
     throw new Error('Argument must be a string.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   for (let i = 0; i < str.length; i++) {
     if (str[i] !== str[str.length - i - 1]) {
@@ -124,7 +124,7 @@ function countUniqueWords(str) {
     throw new Error('Argument must be a string.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   str = str.replace(/[^a-zа-яё0-9\s]/gi, '');
   const countWords = {};
@@ -152,7 +152,7 @@ function countWords(str) {
     throw new Error('Argument must be a string.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   str = str.replace(/[^a-zа-яё0-9\s]/gi, '');
   const countWords = {};
@@ -166,7 +166,7 @@ function countWords(str) {
   return countWords;
 }
 
-//* task 7 
+// //* task 7 
 //Вычислить периметр и площадь для прямоугольника, треугольника и круга. С помощью конструктора и классов.
 
 class Rectangle {
@@ -178,7 +178,7 @@ class Rectangle {
       throw new Error('Arguments must be a positive number.');
     }
     if (arguments.length > 2) {
-      throw new Error('There must be only two argument.')
+      throw new Error('There must be only two argument.');
     }
     this.width = width;
     this.heigth = heigth;
@@ -202,7 +202,7 @@ class Triangle {
       throw new Error('Arguments must be a positive number.');
     }
     if (arguments.length > 3) {
-      throw new Error('There must be only three argument.')
+      throw new Error('There must be only three argument.');
     }
     this.firstSide = firstSide;
     this.secondSide = secondSide;
@@ -226,7 +226,7 @@ class Сircle {
       throw new Error('Argument must be a positive number.');
     }
     if (arguments.length > 1) {
-      throw new Error('There must be only one argument.')
+      throw new Error('There must be only one argument.');
     }
     this.radius = radius;
   }
@@ -246,7 +246,7 @@ function Rectangle(width, heigth) {
     throw new Error('Arguments must be a positive number.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   this.width = width;
   this.heigth = heigth;
@@ -268,7 +268,7 @@ function Triangle(firstSide, secondSide, thirdSide) {
     throw new Error('Arguments must be a positive number.');
   }
   if (arguments.length > 3) {
-    throw new Error('There must be only three argument.')
+    throw new Error('There must be only three argument.');
   }
   this.firstSide = firstSide;
   this.secondSide = secondSide;
@@ -292,7 +292,7 @@ function Сircle(radius) {
     throw new Error('Argument must be a positive number.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   this.radius = radius;
 }
@@ -316,7 +316,7 @@ function factorialNumber(number) {
     throw new Error('You have reached the safest number possible.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   let result = 1;
   for (let i = 1; i <= number; i++) {
@@ -333,7 +333,7 @@ function factorialNumberRecursion(number) {
     throw new Error('You have reached the safest number possible.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   if (number === 1) {
     return 1;
@@ -351,7 +351,7 @@ const memoFactorial = (function () {
       throw new Error('You have reached the safest number possible.');
     }
     if (arguments.length > 1) {
-      throw new Error('There must be only one argument.')
+      throw new Error('There must be only one argument.');
     }
     let result;
     if (num in memo) {
@@ -374,7 +374,7 @@ function sumNumbers(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
@@ -416,7 +416,7 @@ function countNumbers(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
@@ -438,7 +438,7 @@ function transformBinary(number) {
     throw new Error('Argument must be a positive number.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   let result = '';
   while (number > 0) {
@@ -454,7 +454,7 @@ function trasformDecimal(str) {
     throw new Error('Argument must be a string.');
   }
   if (arguments.length > 1) {
-    throw new Error('There must be only one argument.')
+    throw new Error('There must be only one argument.');
   }
   let result = 0;
   let length = str.length;
@@ -473,12 +473,12 @@ function sumNumbersMatrix(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
     if (!Array.isArray(array[i])) {
-      throw new Error('Must be a two-dimensional array.')
+      throw new Error('Must be a two-dimensional array.');
     }
     for (let j = 0; j < array[i].length; j++) {
       if (callback(array[i][j])) {
@@ -496,12 +496,12 @@ function сountNumbersMatrix(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   let result = 0;
   for (let i = 0; i < array.length; i++) {
     if (!Array.isArray(array[i])) {
-      throw new Error('Must be a two-dimensional array.')
+      throw new Error('Must be a two-dimensional array.');
     }
     for (let j = 0; j < array[i].length; j++)
       if (callback(array[i][j])) {
@@ -521,7 +521,7 @@ function sumNumbersRange(min, max, callback) {
     throw new Error('Min must be smaller than max.');
   }
   if (arguments.length > 3) {
-    throw new Error('There must be only three argument.')
+    throw new Error('There must be only three argument.');
   }
   if (typeof min !== 'number'
     || typeof max !== 'number'
@@ -568,7 +568,7 @@ function averageNumber(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   let result = 0;
   let counter = 0;
@@ -592,7 +592,7 @@ function averageNumberMatrix(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   if (arguments.length > 2) {
-    throw new Error('There must be only two argument.')
+    throw new Error('There must be only two argument.');
   }
   if (array.length < 1) {
     return result;
@@ -601,7 +601,7 @@ function averageNumberMatrix(array, callback) {
   let counter = 0;
   for (let i = 0; i < array.length; i++) {
     if (!Array.isArray(array[i])) {
-      throw new Error('Must be a two-dimensional array.')
+      throw new Error('Must be a two-dimensional array.');
     }
     if (array[i].length < 1) {
       continue;
@@ -626,10 +626,25 @@ function transposeMatrix(array) {
   if (!Array.isArray(array)) {
     throw new Error('Array must be array.');
   }
+  if (array.length === 0) {
+    throw new Error('Array must have any numerical values.');
+  }
   let result = [];
-  for (let i = 0; i < array[0].length; i++) {
+  for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      throw new Error('Must be a two-dimensional array.');
+    }
+    if (array[i].length < 1) {
+      throw new Error('Array must have any numerical values.');
+    }
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     result[i] = [];
     for (let j = 0; j < array.length; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       result[i][j] = array[j][i];
     }
   }
@@ -644,8 +659,18 @@ function sumTwoMatrix(arrayOne, arrayTwo) {
   }
   let result = [];
   for (let i = 0; i < arrayOne.length; i++) {
+    if (arrayOne[i].length < 1 || arrayTwo[i].length < 1) {
+      throw new Error('Arrays must have any numerical values.');
+    }
+    if (!Array.isArray(arrayOne[i]) || !Array.isArray(arrayTwo[i])) {
+      throw new Error('Must be a two-dimensional arrays.');
+    }
     result[i] = [];
     for (let j = 0; j < arrayOne[0].length; j++) {
+      if (typeof arrayOne[i][j] !== 'number'
+        || typeof arrayTwo[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       result[i][j] = arrayOne[i][j] + arrayTwo[i][j];
     }
   }
@@ -660,6 +685,9 @@ function deleteRowMatrix(array, callback) {
     throw new Error('Array must be array, callback must be a function.');
   }
   for (let i = 0; i < array.length; i++) {
+    if (!Array.isArray(array[i])) {
+      throw new Error('Must be a two-dimensional arrays.');
+    }
     if (array[i].some(callback)) {
       array.splice(i, 1);
       i--;
@@ -689,25 +717,35 @@ function deleteColumnMatrix(array, callback) {
 // Посчитать сумму / количество нулевых элементов / среднее значение элементов матрицы над и под главной диагональю и на главной диагонали.
 
 function findSumDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be array.');
   }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
+    if (typeof array[i][i] !== 'number') {
+      throw new Error('Elements must be only a number.');
+    }
     sum += array[i][i];
   }
   return sum;
 }
 
 function findSumAboveDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be a array.');
   }
   let sum = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = i + 1; j < array[i].length; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       sum += array[i][j];
     }
   }
@@ -715,13 +753,18 @@ function findSumAboveDiagonal(array) {
 }
 
 function findSumUnderDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be array.');
   }
   let sum = 0;
   for (let i = 1; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = 0; j < i; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       sum += array[i][j];
     }
   }
@@ -729,13 +772,17 @@ function findSumUnderDiagonal(array) {
 }
 
 function findAmountDiagonal(array, callback) {
-  if (!Array.isArray(array)
-    || typeof callback !== 'function'
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array and callback a function.');
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array and callback a function.');
   }
   let amount = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
+    if (typeof array[i][i] !== 'number') {
+      throw new Error('Elements must be only a number.');
+    }
     if (callback(array[i][i])) {
       amount++;
     }
@@ -744,14 +791,18 @@ function findAmountDiagonal(array, callback) {
 }
 
 function findAmounAboveDiagonal(array, callback) {
-  if (!Array.isArray(array)
-    || typeof callback !== 'function'
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array and callback a function.');
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array and callback a function.');
   }
   let amount = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = i + 1; j < array[i].length; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       if (callback(array[i][j])) {
         amount++;
       }
@@ -761,14 +812,18 @@ function findAmounAboveDiagonal(array, callback) {
 }
 
 function findAmountUnderDiagonal(array, callback) {
-  if (!Array.isArray(array)
-    || typeof callback !== 'function'
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array and callback a function.');
+  if (!Array.isArray(array) || typeof callback !== 'function') {
+    throw new Error('Array must be array and callback a function.');
   }
   let amount = 0;
   for (let i = 1; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = 0; j < i; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       if (callback(array[i][j])) {
         amount++;
       }
@@ -778,28 +833,38 @@ function findAmountUnderDiagonal(array, callback) {
 }
 
 function findAverageDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be array.');
   }
   let sum = 0;
   let counter = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
+    if (typeof array[i][i] !== 'number') {
+      throw new Error('Elements must be only a number.');
+    }
     sum += array[i][i];
-    counter++
+    counter++;
   }
   return sum / counter;
 }
 
 function findAverageAboveDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be array.');
   }
   let sum = 0;
   let counter = 0;
   for (let i = 0; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = i + 1; j < array[i].length; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       sum += array[i][j];
       counter++;
     }
@@ -808,14 +873,19 @@ function findAverageAboveDiagonal(array) {
 }
 
 function findAverageUnderDiagonal(array) {
-  if (!Array.isArray(array)
-    || array.length !== array[0].length) {
-    throw new Error('Array must be square array.');
+  if (!Array.isArray(array)) {
+    throw new Error('Array must be array.');
   }
   let sum = 0;
   let counter = 0;
   for (let i = 1; i < array.length; i++) {
+    if (array[i].length !== array.length) {
+      throw new Error('Array must be a square matrix.');
+    }
     for (let j = 0; j < i; j++) {
+      if (typeof array[i][j] !== 'number') {
+        throw new Error('Elements must be only a number.');
+      }
       sum += array[i][j];
       counter++;
     }
